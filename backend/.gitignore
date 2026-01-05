@@ -1,0 +1,19 @@
+# Symfony
+/vendor/
+/var/
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+
+# PHPUnit
+/phpunit.xml
+.phpunit.result.cache
+
+# Composer
+composer.phar
+
+# IDE
+/.idea
+/.vscode

@@ -1,0 +1,29 @@
+# Git
+.git
+.gitignore
+
+# Vendor (will be installed in container)
+vendor/
+
+# Var directory (cache/logs)
+var/
+
+# IDE
+.idea/
+.vscode/
+
+# Docker
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
+# Tests
+tests/
+phpunit.xml*
+
+# Documentation
+*.md
+
+# Environment files
+.env.local
+.env.*.local
