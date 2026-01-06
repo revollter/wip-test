@@ -32,6 +32,8 @@ export default function CalendarPage() {
   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
   const [selectedReservation, setSelectedReservation] = useState<Reservation | null>(null);
   const [initialDate, setInitialDate] = useState<string>('');
+  const [initialStartTime, setInitialStartTime] = useState<string>('');
+  const [initialEndTime, setInitialEndTime] = useState<string>('');
   const [isEditing, setIsEditing] = useState(false);
 
   const fetchData = useCallback(async () => {
@@ -54,8 +56,10 @@ export default function CalendarPage() {
     fetchData();
   }, [fetchData]);
 
-  const handleDateClick = (date: string) => {
+  const handleSelect = (date: string, startTime: string, endTime: string) => {
     setInitialDate(date);
+    setInitialStartTime(startTime);
+    setInitialEndTime(endTime);
     setIsCreateModalOpen(true);
   };
 
@@ -73,6 +77,8 @@ export default function CalendarPage() {
       toast.success('Reservation created successfully');
       setIsCreateModalOpen(false);
       setInitialDate('');
+      setInitialStartTime('');
+      setInitialEndTime('');
       fetchData();
     } catch (error: unknown) {
       console.error('Failed to create reservation:', error);
@@ -162,7 +168,7 @@ export default function CalendarPage() {
           <Calendar
             reservations={reservations}
             rooms={rooms}
-            onDateClick={handleDateClick}
+            onSelect={handleSelect}
             onEventClick={handleEventClick}
           />
         </div>
@@ -174,17 +180,23 @@ export default function CalendarPage() {
         onClose={() => {
           setIsCreateModalOpen(false);
           setInitialDate('');
+          setInitialStartTime('');
+          setInitialEndTime('');
         }}
         title="New Reservation"
       >
         <ReservationForm
           rooms={rooms}
           initialDate={initialDate}
+          initialStartTime={initialStartTime}
+          initialEndTime={initialEndTime}
           initialRoomId={selectedRoom || undefined}
           onSubmit={handleCreateReservation}
           onCancel={() => {
             setIsCreateModalOpen(false);
             setInitialDate('');
+            setInitialStartTime('');
+            setInitialEndTime('');
           }}
         />
       </Modal>

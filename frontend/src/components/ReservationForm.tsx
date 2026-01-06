@@ -7,6 +7,8 @@ interface ReservationFormProps {
   rooms: ConferenceRoom[];
   reservation?: Reservation | null;
   initialDate?: string;
+  initialStartTime?: string;
+  initialEndTime?: string;
   initialRoomId?: number;
   onSubmit: (data: CreateReservationData) => Promise<void>;
   onCancel: () => void;
@@ -19,6 +21,8 @@ export default function ReservationForm({
   rooms,
   reservation,
   initialDate,
+  initialStartTime,
+  initialEndTime,
   initialRoomId,
   onSubmit,
   onCancel,
@@ -44,9 +48,11 @@ export default function ReservationForm({
       setNotes(reservation.notes || '');
     } else {
       if (initialDate) setDate(initialDate);
+      if (initialStartTime) setStartTime(initialStartTime);
+      if (initialEndTime) setEndTime(initialEndTime);
       if (initialRoomId) setConferenceRoomId(initialRoomId.toString());
     }
-  }, [reservation, initialDate, initialRoomId]);
+  }, [reservation, initialDate, initialStartTime, initialEndTime, initialRoomId]);
 
   const validate = (): boolean => {
     const newErrors: Record<string, string> = {};

@@ -9,7 +9,7 @@ import { ConferenceRoom, Reservation } from '@/types';
 interface CalendarProps {
   reservations: Reservation[];
   rooms: ConferenceRoom[];
-  onDateClick: (date: string) => void;
+  onSelect: (date: string, startTime: string, endTime: string) => void;
   onEventClick: (reservationId: number) => void;
 }
 
@@ -31,7 +31,7 @@ const roomColors = [
 export default function Calendar({
   reservations,
   rooms,
-  onDateClick,
+  onSelect,
   onEventClick,
 }: CalendarProps) {
   // Create a color map for rooms
@@ -66,7 +66,12 @@ export default function Calendar({
           right: 'dayGridMonth,timeGridWeek,timeGridDay',
         }}
         events={events}
-        dateClick={(info) => onDateClick(info.dateStr.split('T')[0])}
+        select={(info) => {
+          const date = info.startStr.split('T')[0];
+          const startTime = info.start.toTimeString().slice(0, 5);
+          const endTime = info.end.toTimeString().slice(0, 5);
+          onSelect(date, startTime, endTime);
+        }}
         eventClick={(info) => {
           const reservationId = parseInt(info.event.id);
           onEventClick(reservationId);
