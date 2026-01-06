@@ -77,7 +77,7 @@ A full-stack web application for managing conference room reservations, built wi
    - Install all dependencies
 
 
-3. **Run database migrations** (in a new terminal):
+3. **Run database migrations:**
    ```bash
    docker exec reservation_backend php bin/console doctrine:migrations:migrate --no-interaction
    ```
