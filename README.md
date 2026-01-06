@@ -75,14 +75,20 @@ A full-stack web application for managing conference room reservations, built wi
    This single command will:
    - Build and start all containers (PostgreSQL, RabbitMQ, Symfony backend, Next.js frontend)
    - Install all dependencies
-   - Set up proper file permissions automatically via entrypoint script
+
 
 3. **Run database migrations** (in a new terminal):
    ```bash
    docker exec reservation_backend php bin/console doctrine:migrations:migrate --no-interaction
    ```
 
-4. **Access the application:**
+4. **Load sample data for development:**
+   ```bash
+   docker exec reservation_backend php bin/console doctrine:fixtures:load --no-interaction
+   ```
+   This will create 5 sample conference rooms and reservations for the current week.
+
+5. **Access the application:**
    - **Frontend**: http://localhost:3000
    - **Backend API**: http://localhost:8080/api
    - **RabbitMQ Management**: http://localhost:15672 (guest/guest)
