@@ -14,7 +14,7 @@ export interface ConferenceRoom {
 
 export interface Reservation {
   id: number;
-  conferenceRoomId: number;
+  conferenceRoom: number;
   conferenceRoomName: string;
   reserverName: string;
   date: string;
@@ -40,7 +40,7 @@ export interface UpdateRoomData {
 }
 
 export interface CreateReservationData {
-  conferenceRoomId: number;
+  conferenceRoom: number;
   reserverName: string;
   date: string;
   startTime: string;
@@ -49,7 +49,7 @@ export interface CreateReservationData {
 }
 
 export interface UpdateReservationData {
-  conferenceRoomId?: number;
+  conferenceRoom?: number;
   reserverName?: string;
   date?: string;
   startTime?: string;
