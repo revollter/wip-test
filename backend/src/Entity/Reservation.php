@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ReservationRepository;
 use App\Validator\EndTimeAfterStartTime;
 use App\Validator\NoOverlappingReservation;
+use App\Validator\NotInPast;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -16,6 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\HasLifecycleCallbacks]
 #[EndTimeAfterStartTime]
 #[NoOverlappingReservation]
+#[NotInPast]
 class Reservation
 {
     #[ORM\Id]
