@@ -63,7 +63,7 @@ A full-stack web application for managing conference room reservations, built wi
 
 1. **Clone the repository:**
    ```bash
-   git clone <repository-url>
+   git clone git@github.com:revollter/wip-test.git
    cd conference-room-reservation
    ```
 
