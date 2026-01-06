@@ -8,7 +8,7 @@ A full-stack web application for managing conference room reservations, built wi
 - **Reservation System**: Book conference rooms with time slot validation to prevent double-booking.
 - **Interactive Calendar**: View and manage reservations using an intuitive calendar interface.
 - **Real-time Notifications**: RabbitMQ integration for asynchronous notification processing.
-- **RESTful API**: Well-structured API with proper validation and error handling.
+- **RESTful API**: API with validation and error handling.
 
 ## Technology Stack
 
@@ -93,9 +93,6 @@ A full-stack web application for managing conference room reservations, built wi
    - **Backend API**: http://localhost:8080/api
    - **RabbitMQ Management**: http://localhost:15672 (guest/guest)
 
-### Note on Permissions
-
-The Docker entrypoint script (`docker-entrypoint.sh`) automatically handles file permissions for mounted volumes. This ensures the application works correctly regardless of host system permissions.
 
 ## API Endpoints
 
@@ -141,7 +138,7 @@ curl -X POST http://localhost:8080/api/rooms \
 curl -X POST http://localhost:8080/api/reservations \
   -H "Content-Type: application/json" \
   -d '{
-    "conferenceRoomId": 1,
+    "conferenceRoom": 1,
     "reserverName": "John Smith",
     "date": "2024-01-15",
     "startTime": "10:00",
